@@ -147,7 +147,13 @@ const handleLike = async () => {
           {/* POST IMAGE */}
           {post.image && (
             <div className="rounded-lg overflow-hidden">
-              <Image src={post.image} alt="Post content" className="w-full h-auto object-cover" />
+              <Image
+  src={post.image}
+  alt="Post content"
+  width={800}   // actual image width
+  height={600}  // actual image height
+  className="object-cover"
+/>
             </div>
           )}
 
