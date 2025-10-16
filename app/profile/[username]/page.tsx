@@ -4,7 +4,13 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import ProfilePageClient from './ProfilePageClient';
 
-export const generateMetadata=async({params}:{params:{username:string}}):Promise<Metadata>=>{
+interface PageProps {
+  params: {
+    username: string
+  }
+}
+
+export const generateMetadata=async({params}:PageProps):Promise<Metadata>=>{
   const username=await params.username
   const user=await getProfileByUsername(username);
 
@@ -14,9 +20,7 @@ export const generateMetadata=async({params}:{params:{username:string}}):Promise
   }
 }
 
-const ProfilePage =async ({params}:{
- params:{username:string} 
-}) => {
+const ProfilePage =async ({params}:PageProps) => {
     const user=await getProfileByUsername(params.username);
   if(!user) notFound()
 

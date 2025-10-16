@@ -19,6 +19,7 @@ try {
   toast.success("User followed successfully")
   
 } catch (error) {
+  console.log('Error : ',error)
  toast.error("Error following user")
 }finally{
   setIsLoading(false)

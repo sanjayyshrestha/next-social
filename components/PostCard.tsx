@@ -9,8 +9,9 @@ import Link from 'next/link'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { DeleteAlertDialog } from './DeleteAlertDialog'
 import { Button } from './ui/button'
-import { HeartIcon, LogInIcon, MessageCircleIcon, SendIcon } from 'lucide-react'
+import {  HeartIcon, LogInIcon, MessageCircleIcon, SendIcon } from 'lucide-react'
 import { Textarea } from './ui/textarea'
+import Image from 'next/image'
 
 type Posts=Awaited<ReturnType<typeof getPosts>>
 
@@ -51,6 +52,7 @@ const handleLike = async () => {
     await toggleLike(post.id);
   } catch (error) {
     // Rollback if API fails
+    console.log(error)
     startTransition(() => {
       addLike(hasLiked ? 1 : -1);
     });
@@ -88,6 +90,7 @@ const handleLike = async () => {
         toast.success('Post deleted successfully')
       }
     } catch (error) {
+      console.log(error)
       toast.error("Failed to delete post")
     }finally{
       setIsDeleting(false)
@@ -101,6 +104,7 @@ const handleLike = async () => {
       toast.success("Comment deleted successfully")
      }
     } catch (error) {
+      console.log(error)
       toast.error('Failed to delete comment')
     }
   }
@@ -143,7 +147,7 @@ const handleLike = async () => {
           {/* POST IMAGE */}
           {post.image && (
             <div className="rounded-lg overflow-hidden">
-              <img src={post.image} alt="Post content" className="w-full h-auto object-cover" />
+              <Image src={post.image} alt="Post content" className="w-full h-auto object-cover" />
             </div>
           )}
 

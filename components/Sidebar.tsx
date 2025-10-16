@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { getUserByClerkId } from '@/actions/user.action';
 import {  LinkIcon, MapPinIcon } from 'lucide-react';
 import { Separator } from './ui/separator';
-import { Avatar, AvatarImage } from './ui/avatar';
+import { Avatar } from './ui/avatar';
 import Link from 'next/link';
 import SidebarImage from './SidebarImage';
 
